@@ -5,6 +5,8 @@ const UserDetails = ({ user }) => {
   const [isLoading, setIsLoading] = useState(true); // Controls loader visibility
 
   useEffect(() => {
+    if (!user) return;
+
     // Simulate a delay for loading user details (e.g., fetching from an API)
     const timer = setTimeout(() => {
       setIsLoading(false); // Disable loader after details are ready
@@ -17,6 +19,14 @@ const UserDetails = ({ user }) => {
     return (
       <div className="flex justify-center items-center h-96">
         <Loader /> {/* Display the loader while user details are loading */}
+      </div>
+    );
+  }
+
+  if (!user) {
+    return (
+      <div className="flex justify-center items-center h-96">
+        <p className="text-gray-500 text-lg">No user selected.</p>
       </div>
     );
   }
